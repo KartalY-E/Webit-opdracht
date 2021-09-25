@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Item;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('items', ItemController::class);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
