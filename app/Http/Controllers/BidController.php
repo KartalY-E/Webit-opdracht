@@ -8,7 +8,6 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 
 use App\Rules\ValidBid;
@@ -19,24 +18,13 @@ class BidController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $bids =  Bid::where('user_id', Auth::id())->simplePaginate(5);
         return view('bids.index', ['bids' => $bids]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request, Item $item)
     {
         $request->validate([

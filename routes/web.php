@@ -22,7 +22,7 @@ Route::get('/', function () {return view('welcome');})->name('home');
 Route::resource('items', ItemController::class);
 
 Route::middleware(['auth'])->group(function () {
-    //Users
+   
     Route::resource('bids', BidController::class)->except(['store','destroy']);
     Route::post('bids/{item:slug}', [BidController::class, 'store'])->name('bids.store');
     Route::delete('bids/remove/{item:slug}', [BidController::class, 'destroy'])->name('bids.destroy');
