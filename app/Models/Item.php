@@ -25,4 +25,9 @@ class Item extends Model
         'image',
         'slug'
     ];
+
+    public function bids()
+    {
+        return $this->hasMany(Bid::class);
+    }
 }
