@@ -5,10 +5,14 @@
         </h2>
     </x-slot>
 
+    
+    
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-4 bg-white border-b border-gray-200 grid gap-4 grid-cols-3">
+
+                    
 
                     <div class="p-8">
                         <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ $item->name }}</h2>
@@ -24,8 +28,12 @@
                             <h3>No bids made yet</h3>
                         @endisset
 
-                        @include('layouts.errors')
                         <form method="POST" action="{{ route('bids.store', $item) }}">
+                            @error('amount')
+                            <div class="alert alert-danger">
+                                Your bid is not high enough
+                            </div>
+                            @enderror
                             @csrf
                             @method('POST')
     
@@ -50,6 +58,7 @@
                         
                     </div>
                 </div>
+                @include('items/comments',['item' => $item])
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\BidController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\AdminController;
@@ -22,7 +23,10 @@ Route::get('/', function () {return view('welcome');})->name('home');
 Route::resource('items', ItemController::class);
 
 Route::middleware(['auth'])->group(function () {
+
+
    
+    Route::resource('comments', CommentController::class);
     Route::resource('bids', BidController::class)->except(['store','destroy']);
     Route::post('bids/{item:slug}', [BidController::class, 'store'])->name('bids.store');
     Route::delete('bids/remove/{item:slug}', [BidController::class, 'destroy'])->name('bids.destroy');
@@ -32,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('store-new-password', [PasswordResetController::class, 'storePassword'])->middleware('auth')->name('users.storePassword');
 
     //Admin
-    Route::get('admin/bids', [AdminController::class, 'index'])->middleware(['auth', 'admin'])->name('admins.bids');
+    Route::get('admin/bids', [AdminController::class, 'allBids'])->middleware(['auth', 'admin'])->name('admins.bids');
+    Route::get('admin/comments', [AdminController::class, 'allComments'])->middleware(['auth', 'admin'])->name('admins.comments');
 });
 require __DIR__ . '/auth.php';

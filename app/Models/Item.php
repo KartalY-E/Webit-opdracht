@@ -30,4 +30,10 @@ class Item extends Model
     {
         return $this->hasMany(Bid::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

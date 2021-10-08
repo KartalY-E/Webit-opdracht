@@ -39,6 +39,9 @@
                     <x-nav-link :href="route('admins.bids')" :active="request()->routeIs('admins.bids')">
                         {{ __('All bids') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admins.comments')" :active="request()->routeIs('admins.comments')">
+                        {{ __('All comments') }}
+                    </x-nav-link>
                 </div>
                 @endcan
                 @endauth
@@ -121,10 +124,12 @@
             <x-responsive-nav-link :href="route('bids.index')" :active="request()->routeIs('bids.index')">
                 {{ __('My bids') }}
             </x-responsive-nav-link>
-
             @can('admin')
             <x-responsive-nav-link :href="route('admins.bids')" :active="request()->routeIs('admins.bids')">
                 {{ __('All bids') }}
+            </x-responsive-nav-link>    
+            <x-responsive-nav-link :href="route('admins.comments')" :active="request()->routeIs('admins.comments')">
+                {{ __('All comments') }}
             </x-responsive-nav-link>                
             @endcan
             @endauth
