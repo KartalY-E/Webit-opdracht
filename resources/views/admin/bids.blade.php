@@ -10,8 +10,6 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
-                    @empty($allBids)
-
                     <table class="w-full">
                         <thead>
                             <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
@@ -23,7 +21,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allBids as $bid)
+                            @forelse ($allBids as $bid)
                                 <tr class="text-left">
                                     <td>{{ $loop->index  }}</td>
                                     <td>{{ $bid->name  }}</td>
@@ -31,7 +29,12 @@
                                     <td>{{ $bid->email  }}</td>
                                     <td>{{ $bid->amount  }}</td>
                                 </tr>
-                            @endforeach
+                            @empty
+                            <tr>
+                                <td>{{ __('No Bids Made') }}</td>
+                            </tr>
+                            
+                            @endforelse
                             
                         </tbody>
                     </table>
@@ -39,9 +42,7 @@
                         {{ $allBids->links() }}
                     </div>
                     
-                    @else
-                    <h3>No bids made</h3>
-                    @endempty
+
                 </div>
             </div>
         </div>
