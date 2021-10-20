@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 grid grid-cols-2 flex justify-center items-center">
                     <div class="p-4">
-                        <img src="{{ asset('/images/Campo-18-1000x1000.jpg'); }}" alt="">
+                        <img src="{{ asset('images/Campo-18-1000x1000.jpg'); }}" alt="">
                     </div>
                     <div class="p-4">
                             <h2 class="font-bold">A remarkable history</h2>

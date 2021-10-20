@@ -27,3 +27,7 @@ Small project where users can bid on art. With a focus on backend.
 #### DB seeders
 
 -   Create one admin user
+
+<div align="center">
+    <img src="public/images/homeScreenshot.jpg" width="60%">
+</div>
