@@ -12,7 +12,7 @@ Small project where users can bid on art. With a focus on backend.
 
 #### Users can
 
--   Bid on art pieces on art
+-   Bid on art pieces
 -   Leave a comment on an art piece
 -   See there bids on My Bids page
 -   reset ther password
